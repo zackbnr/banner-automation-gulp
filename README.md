@@ -6,8 +6,8 @@ An internal tool for optimizing, packaging up, and previewing banners.
 - gulp
 
 ## Development ToDo
-- Get gulp running / set up repository
-- Remove the unused images in a project
+- ~~Get gulp running / set up repository~~
+- ~~Remove the unused images in a project~~
 - Trow an error if missing a backup image
 - Update the HTML file
     - Enabler file

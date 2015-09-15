@@ -9,6 +9,10 @@
   "author": "Zack Stickles",
   "license": "ISC",
   "devDependencies": {
+    "glob": "^5.0.14",
     "gulp": "^3.9.0"
+  },
+  "dependencies": {
+    "lodash": "^3.10.1"
   }
 }

@@ -1,12 +1,12 @@
 {
   "name": "banner-automation",
   "version": "1.0.0",
-  "description": "",
+  "description": "An internal tool for optimizing, packaging up, and previewing banners.",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Zack Stickles",
   "license": "ISC",
   "devDependencies": {
     "gulp": "^3.9.0"

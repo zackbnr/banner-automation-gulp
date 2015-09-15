@@ -10,9 +10,9 @@ An internal tool for optimizing, packaging up, and previewing banners.
 - ~~Remove the unused images in a project~~
 - Trow an error if missing a backup image
 - Update the HTML file
-    - Enabler file
-    - Wrap the banner in a click tag (styled)
-    - Add the dimensional meta tag
+    - ~~Enabler file~~
+    - ~~Wrap the banner in a click tag (styled)~~
+    - ~~Add the dimensional meta tag~~
     - Remove `http:` from any urls (except enabler)
     - _Optional:_ Add a border with css (needs thought)
 - Abstract updates to work with a set of files

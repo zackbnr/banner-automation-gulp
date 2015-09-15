@@ -1,7 +1,8 @@
 var gulp    = require('gulp'),
     glob    = require('glob'),
     fs      = require('fs'),
-    _       = require('lodash');
+    _       = require('lodash'),
+    replace = require('gulp-batch-replace');
 
 // finds all the images not refrenced in a source file and removes them from the project
 gulp.task('removeUnusedImages', function() {
@@ -48,6 +49,55 @@ gulp.task('removeUnusedImages', function() {
 
 });
 
-gulp.task('default', ['removeUnusedImages'], function(a) {
+// add the necessary stuff to the html (if it isn't already) to comply with double click
+gulp.task('updateHTML', function() {
+
+    // common information: NOTE: this should be abstracted later on
+    var path = './public/test-banner/';
+    var width = 300;
+    var height = 600;
+    var name = 'test';
+
+    // enabler, meta tag, opening click tag, closing click tag
+    var updateOptions = [
+        [/\<\/title\>/g, '$&\n\t<script src="http://s0.2mdn.net/ads/studio/Enabler.js"></script>'],
+        [/\<\/head\>/g, '\t<meta name="ad.size" content="width=' + width + ',height=' + height + '">\n$&'],
+        [/\<body\>/g, '$&\n\t<a href="javascript:Enabler.exit(\'' + name + '_exit\');">'],
+        [/\<\/body\>/g, '\t</a>\n$&']
+    ];
+
+    // get the html file contents
+    var getHTML = function() {
+        return new Promise(function(resolve, reject) {
+            fs.readFile(path + 'index.html', 'utf-8', function(err, data) {
+                if (err) reject(err);
+                resolve(data);
+            });
+        });
+    };
+
+    // remove the updates that are already in place
+    var getUpdates = function(html) {
+        return new Promise(function(resolve, reject) {
+            var updates = _.filter(updateOptions, function(update) {
+                var newCode = update[1].replace('$&', '');
+                return html.indexOf(newCode) == -1;
+            });
+            resolve(updates);
+        });
+    };
+
+    // run the above then overwrite the html with the new stuff
+    getHTML()
+        .then(getUpdates)
+        .then(function(updates) {
+            gulp.src(path + 'index.html')
+                .pipe(replace(updates))
+                .pipe(gulp.dest(path));
+        });
+
+});
+
+gulp.task('default', ['removeUnusedImages', 'updateHTML'], function(a) {
     return;
 });

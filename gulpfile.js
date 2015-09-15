@@ -4,21 +4,21 @@ var gulp    = require('gulp'),
     _       = require('lodash'),
     replace = require('gulp-batch-replace');
 
+// helper function for getting the contents of a file
+var getFileContent = function(filepath) {
+    return new Promise(function(resolve, reject) {
+        fs.readFile(filepath, 'utf-8', function(err, data) {
+            if (err) reject(err);
+            resolve(data);
+        });
+    });
+};
+
 // finds all the images not refrenced in a source file and removes them from the project
 gulp.task('removeUnusedImages', function() {
 
     // path that we will be working in (NOTE: this can be abstracted later on)
     var path = './public/test-banner/';
-
-    // get the javascript file that refrences the images
-    var getSource = function() {
-        return new Promise(function(resolve, reject) {
-            fs.readFile(path + 'scripts.js', 'utf-8', function(err, data) {
-                if (err) reject(err);
-                resolve(data);
-            });
-        });
-    };
 
     // find all the images not refrenced in the source file (string)
     var getUnusedImages = function(source) {
@@ -43,7 +43,7 @@ gulp.task('removeUnusedImages', function() {
         });
     }
 
-    return getSource()
+    return getFileContent(path + 'scripts.js')
         .then(getUnusedImages)
         .then(removeFiles);
 
@@ -66,16 +66,6 @@ gulp.task('updateHTML', function() {
         [/\<\/body\>/g, '\t</a>\n$&']
     ];
 
-    // get the html file contents
-    var getHTML = function() {
-        return new Promise(function(resolve, reject) {
-            fs.readFile(path + 'index.html', 'utf-8', function(err, data) {
-                if (err) reject(err);
-                resolve(data);
-            });
-        });
-    };
-
     // remove the updates that are already in place
     var getUpdates = function(html) {
         return new Promise(function(resolve, reject) {
@@ -88,7 +78,7 @@ gulp.task('updateHTML', function() {
     };
 
     // run the above then overwrite the html with the new stuff
-    getHTML()
+    getFileContent(path + 'index.html')
         .then(getUpdates)
         .then(function(updates) {
             gulp.src(path + 'index.html')

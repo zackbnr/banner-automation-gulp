@@ -41,6 +41,11 @@ gulp.task('updateHTML', function() {
     });
 });
 
-gulp.task('default', ['removeUnusedImages', 'updateHTML'], function(a) {
+// compress the banners and move them to the dist folder
+gulp.task('compress', function() {
+
+});
+
+gulp.task('default', ['removeUnusedImages', 'updateHTML', 'compress'], function() {
     return;
 });

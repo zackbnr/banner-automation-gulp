@@ -22,6 +22,7 @@ An internal tool for optimizing, packaging up, and previewing banners.
 - Zip the entire project
 - Create a recap report
 - Connect the preview page
+- Deep link preview page
 
 ## Nice to Have
 - PNG image optimization

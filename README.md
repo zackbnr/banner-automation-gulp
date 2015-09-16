@@ -13,7 +13,7 @@ An internal tool for optimizing, packaging up, and previewing banners.
     - ~~Enabler file~~
     - ~~Wrap the banner in a click tag (styled)~~
     - ~~Add the dimensional meta tag~~
-    - Remove `http:` from any urls (except enabler)
+    - ~~Remove `http:` from any urls (except enabler)~~
     - _Optional:_ Add a border with css (needs thought)
 - ~~Abstract updates to work with a set of files~~
 - ~~Read in a JSON file (the same that builds the preview)~~

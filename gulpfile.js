@@ -1,5 +1,6 @@
 var gulp    = require('gulp'),
-    _       = require('lodash');
+    _       = require('lodash')
+    zip     = require('gulp-zip');
 
 var getFileContent = require('./gulp-tasks/getFileContent.js');
 var imageRemoval = require('./gulp-tasks/imageRemoval.js');
@@ -43,7 +44,18 @@ gulp.task('updateHTML', function() {
 
 // compress the banners and move them to the dist folder
 gulp.task('compress', function() {
-
+    _.each(banners, function(version) {
+        _.each(version.variations, function(banner) {
+            // get the directory path (without the file name)
+            var path = getDirectory(banner.path);
+            // get the destination path
+            var dest = './dist/' + version.name;
+            // zip it...zip it good
+            gulp.src(path + '*')
+                .pipe(zip(banner.name + '.zip'))
+                .pipe(gulp.dest(dest));
+        });
+    });
 });
 
 gulp.task('default', ['removeUnusedImages', 'updateHTML', 'compress'], function() {

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Black and Red Banner Preview</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <style>
+            .controls, .banners, .secondary-controls {
+                margin: 20px;
+            }
+            .banners iframe {
+                margin: 10px;
+            }
+            .bnr-logo {
+                width: 380px;
+                height: 64px;
+                background-image: url('./bnr-logo.jpg');
+                position: absolute;
+                bottom: 0;
+                left: 20px;
+            }
+            .dropdown-content li>span {
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+
+        <nav>
+            <div class="nav-wrapper black">
+                <div class="bnr-logo"></div>
+            </div>
+        </nav>
+
+        <!-- CONTROLS -->
+        <div class="secondary-controls row">
+            <div class="col s12 m3">
+                <div class="btn refresh-btn black waves-effect waves-light">Replay</div>
+            </div>
+        </div>
+        <form class="controls row"></form>
+
+        <!-- BANNERS -->
+        <div class="center-align banners"></div>
+
+        <!-- DROPDOWN TEMPLATES -->
+        <script type="text/template" id="dropdown-template">
+            <div class="input-field col s12 m4">
+                <select data-id="<%=id%>">
+                    <% _.each(options, function(option) { %>
+                    <option value="<%=option%>"
+                    <%=(option==active)?'selected':''%>
+                    ><%=option%></option>
+                    <% }); %>
+                </select>
+                <label><%=name%></label>
+            </div>
+        </script>
+
+        <!-- LIVE RELOAD -->
+        <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
+        <script src="scripts.js"></script>
+
+    </body>
+</html>

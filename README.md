@@ -15,7 +15,7 @@ An internal tool for optimizing, packaging up, and previewing banners.
     - ~~Add the dimensional meta tag~~
     - Remove `http:` from any urls (except enabler)
     - _Optional:_ Add a border with css (needs thought)
-- Abstract updates to work with a set of files
+- ~~Abstract updates to work with a set of files~~
 - Read in a JSON file (the same that builds the preview)
 - Zip the banners individually
 - Throw a warning if some banners are too big (and break flow)

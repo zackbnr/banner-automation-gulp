@@ -1,0 +1,28 @@
+[
+    {
+        "name": "Cat",
+        "variations": [
+            {
+                "name": "300x600",
+                "path": "./public/cat/300x600/web/index.html"
+            },
+            {
+                "name": "728x90",
+                "path": "./public/cat/728x90/web/index.html"
+            }
+        ]
+    },
+    {
+        "name": "Dog",
+        "variations": [
+            {
+                "name": "300x600",
+                "path": "./public/dog/300x600/web/index.html"
+            },
+            {
+                "name": "728x90",
+                "path": "./public/dog/728x90/web/index.html"
+            }
+        ]
+    }
+]

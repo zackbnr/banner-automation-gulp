@@ -2,15 +2,15 @@
 An internal tool for optimizing, packaging up, and previewing banners.
 
 ## Setup Instructions
-1. Install `node`
-2. Install `gulp` globally
-3. Clone this repository to your computer
-4. Add banners in their own folders in `public` (see cat & dog example)
-5. Update the `banners.json` file with the relevant information (see cat & dog example)
-6. To start the preview page as a server, run `node app.js`
-7. To package up the applications, run `gulp`
+1. Install `node`.
+2. Install `gulp` globally.
+3. Clone this repository to your computer.
+4. Add banners in their own folders in `public` (see cat & dog example).
+5. Update the `banners.json` file with the relevant information (see cat & dog example).
+6. To start the preview page as a server, run `node app.js`.
+7. To package up the applications, run `gulp`. The final files will go in the `dist` folder.
 
-**NOTE**: The project name is hard-coded (for the moment) in `gulpfile.js`. This controls the name of the clicktag and will also need to be updated.
+**NOTE**: The project name is hard-coded (for the moment) in `gulpfile.js`. This controls the name of the click-tag and will also need to be updated.
 
 ## Stack
 - node

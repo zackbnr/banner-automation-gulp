@@ -12,6 +12,7 @@
     "glob": "^5.0.14",
     "gulp": "^3.9.0",
     "gulp-batch-replace": "0.0.0",
+    "gulp-size": "^2.0.0",
     "gulp-zip": "^3.0.2"
   },
   "dependencies": {

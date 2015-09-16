@@ -1,6 +1,7 @@
 var gulp    = require('gulp'),
     _       = require('lodash')
-    zip     = require('gulp-zip');
+    zip     = require('gulp-zip'),
+    size    = require('gulp-size');
 
 var getFileContent = require('./gulp-tasks/getFileContent.js');
 var imageRemoval = require('./gulp-tasks/imageRemoval.js');
@@ -50,9 +51,13 @@ gulp.task('compress', function() {
             var path = getDirectory(banner.path);
             // get the destination path
             var dest = './dist/' + version.name;
+            // other information about the output
+            var filename = banner.name + '.zip';
+            var title = dest + '/' + filename;
             // zip it...zip it good
             gulp.src(path + '*')
-                .pipe(zip(banner.name + '.zip'))
+                .pipe(zip(filename))
+                .pipe(size({ title: title }))
                 .pipe(gulp.dest(dest));
         });
     });
